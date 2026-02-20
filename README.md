@@ -12,12 +12,35 @@ The system follows a `Generate -> Validate -> Self-Correct` feedback loop:
     *   **Design Compliance**: Ensuring mandatory tokens (like `primary-color`) are present in the code.
 3.  **Self-Correction Loop (`main.py`)**: If the validator detects errors, the system automatically re-prompts the LLM with the specific error logs. The LLM then "fixes" the component based on this feedback.
 
+## Frontend Checklist (Complete)
+- [x] Implement LLM Fallback (OS -> OpenAI)
+    - [x] Update `generator.py` with fallback logic
+    - [x] Update `requirements.txt` and `.env`
+- [x] Implement Interactive UI (Streamlit)
+    - [x] Create `app.py`
+    - [x] Refactor `main.py` for status yielding
+- [x] Documentation and Finalization
+
 ## How to Run
-1.  Ensure you have Python installed.
-2.  Run the orchestration script:
+1.  **Install Dependencies**:
+    ```bash
+    pip install openai groq python-dotenv streamlit
+    ```
+2.  **Set Up API Keys**: Create a `.env` file and add your keys.
+3.  **Run the Interactive UI**:
+    ```bash
+    streamlit run app.py
+    ```
+4.  **Run via Terminal (Original)**:
     ```bash
     python main.py
     ```
+
+## Multi-Provider Fallback Logic
+The system is designed for high availability and cost-efficiency:
+1.  **Primary**: Calls an Open Source model (Llama 3 via Groq).
+2.  **Secondary (Fallback)**: If Groq fails or the key is missing, it automatically falls back to OpenAI (GPT-4o).
+3.  **Failsafe**: If both providers are unavailable, a local mock generator provides a sample response to keep the agentic loop running for demonstration.
 
 ## Prompt Injection Prevention & Scaling
 ### Prompt Injection Prevention

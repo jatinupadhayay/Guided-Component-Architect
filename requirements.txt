@@ -1,0 +1,6 @@
+openai
+groq
+google-genai
+anthropic
+python-dotenv
+streamlit>=1.26.0
