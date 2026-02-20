@@ -1,0 +1,18 @@
+{
+    "tokens": {
+        "primary-color": "#6366f1",
+        "secondary-color": "#a855f7",
+        "background-color": "#f8fafc",
+        "text-color": "#1e293b",
+        "border-radius": "8px",
+        "font-family": "'Inter', sans-serif",
+        "spacing-unit": "4px",
+        "glass-background": "rgba(255, 255, 255, 0.1)",
+        "glass-border": "rgba(255, 255, 255, 0.2)",
+        "glass-blur": "10px"
+    },
+    "rules": {
+        "use-tailwind": true,
+        "use-angular-material": true
+    }
+}
